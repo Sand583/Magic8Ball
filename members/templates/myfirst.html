@@ -1,4 +1,18 @@
 {% load static %}
+
+<script>
+    function before() {
+        document.getElementById ('myImage')
+        .src="{% static 'magic8ball-animated.gif' %}"
+        setTimeout ("blank()", 5500)
+    }
+    function blank() {
+        document.getElementById ('myImage')
+        .src="{% static 'magic8ball-static.png' %}"
+    }
+   
+</script>
+
 <!DOCTYPE html>
 <html>
     
@@ -11,17 +25,16 @@
             Question: <input type="text">
         </form>
     </body>
-    <button class="8ball-button-static"
-        background="black">
+    <button
+        style="background-color: transparent; border: 0px"
+        onclick=before();>  
         <img 
+            id="myImage"
             src="{% static 'magic8ball-static.png' %}"
             width="425"
-            height="425"
-            background="transparent">
-        <br>
-        Click me! 
+            height="425">
     </button>
-        
+    
     <body>
         <p>Answer</p>
     </body>
