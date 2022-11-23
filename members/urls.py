@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path ('response', views.response), # path ('', views.response, name='reponse),
 ]

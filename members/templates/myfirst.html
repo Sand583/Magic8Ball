@@ -9,6 +9,7 @@
         function before() {
             document.getElementById ('myImage')
             .src="{% static 'magic8ball-animated.gif' %}"
+            
             setTimeout ("blank()", 10500)
         }
         function blank() {
@@ -20,33 +21,26 @@
     <head></head>
     <!--Trying to get drop down menu to work- still in progress-->
     <body>
-        <div class="dropdown">
-                <button onclick="menuFunction()" class="dropbtn">
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-        </div>
-
         <form> 
             <input type="text"
             style="background-color: rgba(255, 255, 255, 0.5); 
                 border: 0px;">
         </form>
 
-        <!--Style still only work if it's in this file for some reason-->
-        <button class="8ball"
-            style="background-color: transparent; 
-                border: 0px;" 
-            onclick=before();>  
-            <img 
-                id="myImage"
-                src="{% static 'magic8ball-static.png' %}"
-                width="425"
-                height="425">
-        </button>
+        <form action="/response"> <!-- <a href="response/" -->
+            <!--Style still only work if it's in this file for some reason-->
+            <button class="8ball"
+                style="background-color: transparent; 
+                    border: 0px;" 
+                onclick=before();>  
+                <img 
+                    id="myImage"
+                    src="{% static 'magic8ball-static.png' %}"
+                    width="425"
+                    height="425">
+            </button>
+        </form>
+        
     
         <p>Answer</p>
     </body>

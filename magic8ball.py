@@ -58,9 +58,9 @@ def magic8ball():
         print("Please ask a question.")
         question = input()
         print("Thinking...")
-        time.sleep(3)   #random.randrange(3, 5)     <--- alternative code to have randomized time
+        time.sleep(10.5)   #random.randrange(3, 5)     <--- alternative code to have randomized time
         getResponse()
-        time.sleep(2)
+        time.sleep(4)
 
 # Main function
 if __name__ == "__main__":
