@@ -60,7 +60,7 @@ def magic8ball():
         print("Thinking...")
         time.sleep(10.5)   #random.randrange(3, 5)     <--- alternative code to have randomized time
         getResponse()
-        time.sleep(4)
+        time.sleep(3)
 
 # Main function
 if __name__ == "__main__":
