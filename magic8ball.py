@@ -9,6 +9,27 @@ import gtts
 import os
 from playsound import playsound
 
+
+
+
+# Not working
+# For music API
+#need to do "pip install ytmusicapi" to get ytmusicapi working
+from ytmusicapi import YTMusic
+
+#YTMusic.setup(filepath="headers_auth.json")
+
+yt = YTMusic("headers_auth.json")
+
+playlistId = yt.create_playlist('test', 'test description')
+
+#generic search for youtube (not specific video)
+search_results = yt.search('lofi hip hop radio - beats to relax/study to')
+yt.add_playlist_items(playlistId, [search_results[0]['videoId']])
+
+
+
+
 # pip3 install gTTS pyttsx3 playsound
 # pip uninstall playsound
 # pip install playsound==1.2.2
