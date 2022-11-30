@@ -1,47 +1,108 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html>
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(#c313d3, #410da7);
+        display: flex;
+        justify-content: center;
+    }
     
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <script>
-        src="{% static 'script.js' %}"
-        function before() {
-            document.getElementById ('myImage')
-            .src="{% static 'magic8ball-animated.gif' %}"
-            
-            setTimeout ("blank()", 10500)
-        }
-        function blank() {
-            document.getElementById ('myImage')
-            .src="{% static 'magic8ball-static.png' %}"
-        }
-    </script>
+    /* menu Content (Hidden by Default) */
+    .menu-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    /* Links inside the menu */
+    .menu-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    /* Change color of menu links on hover */
+    .menu-content a:hover {background-color: #f1f1f1}
+    
+    /* Show the menu menu on hover */
+    .menu:hover .menu-content {
+        display: block;
+    }
+    
+    /* Change the background color of the menu button when the menu content is shown */
+    .menu:hover .menubtn {
+        background-color: #ffffff00;
+    }
+</style>
 
-    <head></head>
-    <!--Trying to get drop down menu to work- still in progress-->
-    <body>
-        <form> 
-            <input type="text"
-            style="background-color: rgba(255, 255, 255, 0.5); 
-                border: 0px;">
-        </form>
-
-        <form action="/response"> <!-- <a href="response/" -->
-            <!--Style still only work if it's in this file for some reason-->
-            <button class="8ball"
-                style="background-color: transparent; 
-                    border: 0px;" 
-                onclick=before();>  
-                <img 
-                    id="myImage"
-                    src="{% static 'magic8ball-static.png' %}"
-                    width="425"
-                    height="425">
-            </button>
-        </form>
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
+<script>
+    src="{% static 'script.js' %}"
+    function before() {
+        document.getElementById ('myImage')
+        .src="{% static 'magic8ball-animated.gif' %}"
         
-    
-        <p>Answer</p>
-    </body>
-</html>
+        setTimeout ("blank()", 10500)
+    }
+    function blank() {
+        document.getElementById ('myImage')
+        .src="{% static 'magic8ball-static.png' %}"
+    }
+</script>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="{% static 'magic8ball-static.png' %}">
+</head>
+
+<!--Trying to get drop down menu to work- still in progress-->
+<div class="menu"
+    style= "position: relative;">
+    <button class="menubtn"
+        style = "background-color: #4caf4f00;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;">
+        <img src="{% static 'magic8ball-static.png' %}" alt="magic 8 ball icon"
+        height="100" width="100"> 
+    </button>
+    <div class="menu-content">
+        <a href="#">Mute</a>
+    </div>
+</div>
+
+<form>
+    <input type="text" 
+        style="position:absolute; 
+            left:46%;
+            top:10%; 
+            background-color: rgba(255, 255, 255, 0.5); 
+            border: 0px;" >
+</form>
+
+<button class="ball"
+    style="background-color: transparent; 
+        border: 0px;
+        position-fixed;
+        left:50%;
+        top:50%;"
+    onclick=before();>  
+    <img 
+        id="myImage"
+        width="425"
+        height="425"
+        src="{% static 'magic8ball-static.png' %}">
+</button> 
+
+<div style = "position:absolute; 
+    left:center; 
+    top:90%;" >
+    Answer
+</div>
