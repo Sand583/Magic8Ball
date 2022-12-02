@@ -19,7 +19,7 @@ from ytmusicapi import YTMusic
 
 #YTMusic.setup(filepath="headers_auth.json")
 
-yt = YTMusic("headers_auth.json")
+yt = YTMusic(filepath = "headers_auth.json", headers_raw = "")
 
 playlistId = yt.create_playlist('test', 'test description')
 

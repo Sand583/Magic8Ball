@@ -1,5 +1,6 @@
 {% load static %}
-
+<!--run code with py manage.py runserver          
+    to view site: 127.0.0.1:8000/members/  -->
 <style>
     body {
         font-family: "Poppins", sans-serif;
@@ -54,6 +55,29 @@
         document.getElementById ('myImage')
         .src="{% static 'magic8ball-static.png' %}"
     }
+
+    
+    //working on getting animation in
+    const Spin = [
+        { transform: 'rotate(0) translate3D(-50%, -50%, 0)', color: '#000' },
+        { color: '#431236', offset: 0.3 },
+        { transform: 'rotate(360deg) translate3D(-50%, -50%, 0)', color: '#000' }
+    ];
+
+    const Timing = {
+        duration: 3000,
+        iterations: 10
+    }
+
+    console.log("myStar")
+    console.log(Spin)
+    document.getElementById("myStar").animate
+    (
+        
+        Spin,
+        Timing
+    )
+
 </script>
 
 <head>
@@ -100,6 +124,12 @@
         height="425"
         src="{% static 'magic8ball-static.png' %}">
 </button> 
+
+<img 
+        id="myStar"
+        width="100"
+        height="100"
+        src="{% static 'star.png' %}">
 
 <div style = "position:absolute; 
     left:center; 
