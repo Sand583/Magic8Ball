@@ -44,7 +44,7 @@
 
 <!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
 <script>
-    src="{% static 'script.js' %}"
+   // src="{% static 'script.js' %}"
     function before() {
         document.getElementById ('myImage')
         .src="{% static 'magic8ball-animated.gif' %}"
@@ -58,25 +58,21 @@
 
     
     //working on getting animation in
-    const Spin = [
-        { transform: 'rotate(0) translate3D(-50%, -50%, 0)', color: '#000' },
-        { color: '#431236', offset: 0.3 },
-        { transform: 'rotate(360deg) translate3D(-50%, -50%, 0)', color: '#000' }
-    ];
+    const spin = [
+      { transform: 'rotate(360deg) ' }
+        ];
 
     const Timing = {
         duration: 3000,
-        iterations: 10
+        iterations: 3
     }
-
-    console.log("myStar")
-    console.log(Spin)
-    document.getElementById("myStar").animate
-    (
-        
-        Spin,
+    console.log(document.getElementById('myImage'))
+    window.onload= function (){ document.getElementById("myStar").animate
+    (  
+        spin,
         Timing
     )
+}
 
 </script>
 
@@ -95,7 +91,10 @@
             border: none;
             cursor: pointer;">
         <img src="{% static 'magic8ball-static.png' %}" alt="magic 8 ball icon"
-        height="100" width="100"> 
+        height="100" width="100"
+        style="position:absolute; 
+            left: 520px;
+            top: 5%; " >
     </button>
     <div class="menu-content">
         <a href="#">Mute</a>
@@ -115,8 +114,8 @@
     style="background-color: transparent; 
         border: 0px;
         position: fixed;
-        left: 50%;
-        top: 50%;"
+        left: 35%;
+        top: 20%;"
     onclick=before();>  
     <img 
         id="myImage"
@@ -129,7 +128,12 @@
         id="myStar"
         width="100"
         height="100"
-        src="{% static 'star.png' %}">
+        src="{% static 'star1.png' %}"
+        style="background-color: transparent; 
+        border: 0px;
+        position: fixed;
+        left: 20%;
+        top: 20%;">
 
 <div style = "position:absolute; 
     left:center; 
