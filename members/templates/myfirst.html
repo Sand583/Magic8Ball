@@ -54,25 +54,38 @@
     function blank() {
         document.getElementById ('myImage')
         .src="{% static 'magic8ball-static.png' %}"
-    }
+    }   
 
-    
-    //working on getting animation in
-    const spin = [
-      { transform: 'rotate(360deg) ' }
-        ];
-
+    //Star  animation
+    const spin = [{ transform: 'rotate(360deg) ' }];
     const Timing = {
-        duration: 3000,
-        iterations: 3
+        duration: 2700,
+        iterations: 4
     }
-    console.log(document.getElementById('myImage'))
-    window.onload= function (){ document.getElementById("myStar").animate
-    (  
-        spin,
-        Timing
-    )
-}
+    function star1(){ document.getElementById("myStar").animate
+        (  
+            spin,
+            Timing
+        )
+    }
+    function star2(){ document.getElementById("myStar2").animate
+        (  
+            spin,
+            Timing
+        )
+    }
+    function star3(){ document.getElementById("myStar3").animate
+        (  
+            spin,
+            Timing
+        )
+    }
+    function star4(){ document.getElementById("myStar4").animate
+        (  
+            spin,
+            Timing
+        )
+    }
 
 </script>
 
@@ -116,7 +129,7 @@
         position: fixed;
         left: 35%;
         top: 20%;"
-    onclick=before();>  
+    onclick= "before(); star1(); star2(); star3(); star4();" >  
     <img 
         id="myImage"
         width="425"
@@ -134,6 +147,39 @@
         position: fixed;
         left: 20%;
         top: 20%;">
+
+<img 
+    id="myStar2"
+    width="100"
+    height="100"
+    src="{% static 'star2.png' %}"
+    style="background-color: transparent; 
+    border: 0px;
+    position: fixed;
+    left: 30%;
+    top: 5%;">
+
+<img 
+    id="myStar3"
+    width="100"
+    height="100"
+    src="{% static 'star3.png' %}"
+    style="background-color: transparent; 
+    border: 0px;
+    position: fixed;
+    left: 65%;
+    top: 5%;">
+
+<img 
+    id="myStar4"
+    width="100"
+    height="100"
+    src="{% static 'star4.png' %}"
+    style="background-color: transparent; 
+    border: 0px;
+    position: fixed;
+    left: 75%;
+    top: 20%;">
 
 <div style = "position:absolute; 
     left:center; 
