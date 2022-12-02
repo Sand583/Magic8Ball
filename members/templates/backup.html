@@ -1,0 +1,147 @@
+{% load static %}
+
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(#c313d3, #410da7);
+        display: flex;
+        justify-content: center;
+    }
+   
+    form {
+        width: 50px; 
+    }
+
+    h1 {
+        color: rgb(255, 255, 255);
+    }
+    p {
+        color: rgb(255, 255, 255);
+    }
+
+    .ball {
+        background-color: transparent; 
+        border: 0px;
+    }
+
+</style>
+
+<!DOCTYPE html>
+<html>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <script>
+        src="{% static 'script.js' %}"
+        function before() {
+            document.getElementById ('myImage')
+            .src="{% static 'magic8ball-animated.gif' %}"
+            
+            setTimeout ("blank()", 10500)
+        }
+        function blank() {
+            document.getElementById ('myImage')
+            .src="{% static 'magic8ball-static.png' %}"
+        }
+    </script>
+
+    <head></head>
+    <!--Trying to get drop down menu to work- still in progress-->
+    <body>
+        <form> 
+            <input type="text"
+            style="background-color: rgba(255, 255, 255, 0.5); 
+                border: 0px;">
+        </form>
+
+        <form action="/response"> <!-- <a href="response/" -->
+            <!--Style still only work if it's in this file for some reason-->
+            <button class="8ball"
+                style="background-color: transparent; 
+                    border: 0px;" 
+                onclick=before();>  
+                <img 
+                    id="myImage"
+                    src="{% static 'magic8ball-static.png' %}"
+                    width="425"
+                    height="425">
+            </button>
+        </form>
+
+        <p>Answer</p>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* Style The Dropdown Button */
+    .dropbtn {
+        background-color: #4caf4f00;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #f1f1f1}
+    
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #ffffff00;
+    }
+</style>
+    
+<div class="dropdown">
+    <button class="dropbtn">
+        <img src="magic8ball-static.png" alt="magic 8 ball icon"
+        height="100" width="100"> 
+    </button>
+    <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+</div>
