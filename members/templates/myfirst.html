@@ -1,188 +1,244 @@
 {% load static %}
 <!--run code with py manage.py runserver          
     to view site: 127.0.0.1:8000/members/  -->
+
 <style>
+    /* General */
     body {
-        font-family: "Poppins", sans-serif;
-        min-height: 100vh;
         background: linear-gradient(#c313d3, #410da7);
-        display: flex;
-        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
     }
     
-    /* menu Content (Hidden by Default) */
-    .menu-content {
+    /*Menu*/
+    /*.menu {
+        text-align: right;
+        padding: 0.5em;
+    }
+    .menu .container {
+        display: grid;
+        grid-template-columns: 180px auto;
+        justify-content: unset;
+    }
+    .menu nav { 
         display: none;
+    }*/
+    .menu {
+        padding: 1em; 
+        text-align: right;
+    }
+    .menu .menu-cta {
+        cursor: pointer; 
+    }
+    .menu nav {
+        display: none; 
+    }
+    nav.menu-btn {
+        display: block; 
+    }
+    nav {
+        position: fixed;
+        z-index: 999;
+        right: 0;
+        top: 0; 
+        width: 33%; 
+        height: 100vh; 
+        background: grey; 
+        padding: 1em; 
+    }
+    nav .menu-primary {
+        margin-top: 5em;
+    }
+    
+    
+    /*Question, 8Ball, and Answer*/
+    .hero {
+        text-align: center;
+        position: relative;
+        color: white;
+    }
+    .hero .ball {
+        background-color: transparent;
+    }
+    .hero .ball button {
+        background-color: transparent; 
+        border: 0px;
+    }
+    .hero .ball img {
+        background-color: transparent;
+        border: 0px;
+        width: 30em;
+        height: 30em;
+        cursor: pointer;
+    }
+
+    /*Stars*/
+    
+    .hero .ball .star img {
+        background-color: transparent; 
+        border: 0px;
         position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
+        height: 100;
+        width: 100; 
     }
-    
-    /* Links inside the menu */
-    .menu-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
+    .hero .ball .star #mystar1 {
+        left: 20vw;
+        top: 15vh;
     }
-    
-    /* Change color of menu links on hover */
-    .menu-content a:hover {background-color: #f1f1f1}
-    
-    /* Show the menu menu on hover */
-    .menu:hover .menu-content {
-        display: block;
+    .star #mystar2 {
+        left: 30%;
+        top: 5%
     }
-    
-    /* Change the background color of the menu button when the menu content is shown */
-    .menu:hover .menubtn {
-        background-color: #ffffff00;
+    .star #mystar3 {
+        left: 65%;
+        top: 5%;
     }
+    .star #mystar4 {
+        left: 75%;
+        top: 20%;
+    }
+
 </style>
 
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> -->
-<script>
-   // src="{% static 'script.js' %}"
-    function before() {
-        document.getElementById ('myImage')
-        .src="{% static 'magic8ball-animated.gif' %}"
-        
-        setTimeout ("blank()", 10500)
-    }
-    function blank() {
-        document.getElementById ('myImage')
-        .src="{% static 'magic8ball-static.png' %}"
-    }   
-
-    //Star  animation
-    const spin = [{ transform: 'rotate(360deg) ' }];
-    const Timing = {
-        duration: 2700,
-        iterations: 4
-    }
-    function star1(){ document.getElementById("myStar").animate
-        (  
-            spin,
-            Timing
-        )
-    }
-    function star2(){ document.getElementById("myStar2").animate
-        (  
-            spin,
-            Timing
-        )
-    }
-    function star3(){ document.getElementById("myStar3").animate
-        (  
-            spin,
-            Timing
-        )
-    }
-    function star4(){ document.getElementById("myStar4").animate
-        (  
-            spin,
-            Timing
-        )
-    }
-
-</script>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="{% static 'magic8ball-static.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8 Ball</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<!--Trying to get drop down menu to work- still in progress-->
-<div class="menu"
-    style= "position: relative;">
-    <button class="menubtn"
-        style = "background-color: #4caf4f00;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;">
-        <img src="{% static 'magic8ball-static.png' %}" alt="magic 8 ball icon"
-        height="100" width="100"
-        style="position:absolute; 
-            left: 520px;
-            top: 5%; " >
-    </button>
-    <div class="menu-content">
-        <a href="#">Mute</a>
+<body>
+    <div class="menu">
+        <div class="container">
+            <img id="menu-cta" class="menu-icon" src="{% static 'menu.svg' %}" alt="Open Menu">
+            
+            <nav>
+                <img id="menu-exit" class="menu-icon-exit" src="{% static 'images/exit.svg' %}" alt="Close Menu">
+
+                <div class="menu-primary">
+                    <div class="sound">
+                        <div class="volume">
+                            volume
+                            <input type="range" min="0" max="100" class="slider" id="range">
+                        </div>
+                        <div class="volume">
+                            music
+                            <input type="range" min="0" max="100" class="slider" id="range">
+                        </div>
+                        <div class="volume">
+                            text
+                            <input type="range" min="0" max="100" class="slider" id="range">
+                        </div>
+                    </div> <!--sound-->
+
+                    <ul>
+                        <li>
+                            <a href="#">Customize Answers</a>
+                        </li> 
+                    </ul> 
+                    
+                </div> <!--menu-primary-->
+
+                <ul class="menu-secondary">
+                    <li>
+                        <a href="https://github.com/Sand583/Magic8Ball">gitHub</a>
+                    </li>
+                </ul>
+            </nav> 
+        </div><!--menu container-->
+    </div> <!--menu-->
+
+    <section class="hero">
+        <div class="container">
+            <div class="user-input">
+                <input type="text">
+            </div> <!--user-input-->
+
+            <div class="ball"
+                onclick="before(); star1(); star2(); star3(); star4();">
+                <button>
+                    <img id="ballStatic" class="ball-static" src="{% static 'magic8ball-static.png' %}" alt="Magic 8 ball">
+                </button>
+            </div> <!--ball-->
+
+            <div class="ball-output">
+                Answer
+            </div> <!--ball-output-->
+
+            <div class = "star">
+                <img id="myStar1" src="{% static 'star1.png' %}">
+                <img id="myStar2" src="{% static 'star1.png' %}">
+                <img id="myStar3" src="{% static 'star1.png' %}">
+                <img id="myStar4" src="{% static 'star1.png' %}">
+            </div> <!--star-->
+        </div> <!--hero container -->
+    </section> <!--hero-->
+    
+    <div class = "star">
+        <!--<img id="myStar1" src="{% static 'star1.png' %}">
+        <img id="myStar2" src="{% static 'star1.png' %}">
+        <img id="myStar3" src="{% static 'star1.png' %}">
+        <img id="myStar4" src="{% static 'star1.png' %}">-->
     </div>
-</div>
+    
+    <script>
+        // Menu 
+        const mobileBtn = document.getElementById('menu-cta')
+              nav = document.querySelector('nav')
+              mobileBtnExit = document.getElementById('menu-exit');
 
-<form>
-    <input type="text" 
-        style="position:absolute; 
-            left: 46%;
-            top: 10%; 
-            background-color: rgba(255, 255, 255, 0.5); 
-            border: 0px;" >
-</form>
+        mobileBtn.addEventListener('click', () => {
+            nav.classList.add('menu-btn');
+        })
 
-<button class="ball"
-    style="background-color: transparent; 
-        border: 0px;
-        position: fixed;
-        left: 35%;
-        top: 20%;"
-    onclick= "before(); star1(); star2(); star3(); star4();" >  
-    <img 
-        id="myImage"
-        width="425"
-        height="425"
-        src="{% static 'magic8ball-static.png' %}">
-</button> 
+        mobileBtnExit.addEventListener('click', () => {
+            nav.classList.remove('menu-btn');
+        })
+        
+        // Play gif 
+        function before() {
+            document.getElementById("ballStatic")
+            .src="{% static 'magic8ball-animated.gif' %}"
+            setTimeout ("blank()", 10500)
+        }
+        function blank() {
+            document.getElementById('ballStatic')
+            .src="{% static 'magic8ball-static.png' %}"
+        }
+        
+        //Star  animation
+        const spin = [{ transform: 'rotate(360deg) ' }];
+        const Timing = {
+            duration: 2700,
+            iterations: 4
+        }
+        function star1(){ document.getElementById("myStar1").animate
+            (  
+                spin,
+                Timing
+            )
+        }
+        function star2(){ document.getElementById("myStar2").animate
+            (  
+                spin,
+                Timing
+            )
+        }
+        function star3(){ document.getElementById("myStar3").animate
+            (   
+                spin,
+                Timing 
+            )
+        }
+        function star4(){ document.getElementById("myStar4").animate
+            (  
+                spin,
+                Timing
+            )
+        }
+    </script>
 
-<img 
-        id="myStar"
-        width="100"
-        height="100"
-        src="{% static 'star1.png' %}"
-        style="background-color: transparent; 
-        border: 0px;
-        position: fixed;
-        left: 20%;
-        top: 20%;">
-
-<img 
-    id="myStar2"
-    width="100"
-    height="100"
-    src="{% static 'star2.png' %}"
-    style="background-color: transparent; 
-    border: 0px;
-    position: fixed;
-    left: 30%;
-    top: 5%;">
-
-<img 
-    id="myStar3"
-    width="100"
-    height="100"
-    src="{% static 'star3.png' %}"
-    style="background-color: transparent; 
-    border: 0px;
-    position: fixed;
-    left: 65%;
-    top: 5%;">
-
-<img 
-    id="myStar4"
-    width="100"
-    height="100"
-    src="{% static 'star4.png' %}"
-    style="background-color: transparent; 
-    border: 0px;
-    position: fixed;
-    left: 75%;
-    top: 20%;">
-
-<div style = "position:absolute; 
-    left:center; 
-    top:90%;" >
-    Answer
-</div>
+</body>
+</html>
