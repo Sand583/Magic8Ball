@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8 Ball Prototype</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="menu">
+        <div class="container">
+            <img id="menu-cta" class="menu" src="images/menu.svg" alt="Open Menu">
+
+            <div class="items">
+                <img id="menu-exit" class="menu-exit" src="images/exit.svg" alt="Close Menu">
+
+                <div class="menu-primary">
+                    <div class="sound">
+                        <div class="volume">
+                            volume
+                            <input type="range" min="0" max="100" class="slider" id="range">
+                        </div>
+                        <div class="volume">
+                            music
+                            <input type="range" min="0" max="100" class="slider" id="range">
+                        </div>
+                        <div class="volume">
+                            text
+                            <input type="range" min="0" max="100" class="slider" id="range">
+                        </div>
+                    </div> <!--sound-->
+
+                    <ul>
+                        <li>
+                            <a href="#">Customize Answers</a>
+                        </li> 
+                    </ul> 
+                    
+                </div> <!--menu-primary-->
+
+                <ul class="menu-secondary">
+                    <li>
+                        <a href="#">gitHub</a>
+                    </li>
+                </ul>
+            </div> <!--items-->
+        </div><!--menu container-->
+    </div> <!--menu-->
+
+    <section class="hero">
+        <div class="container">
+            <div class="user-input">
+                <input type="text">
+            </div> <!--user-input-->
+
+            <div class="ball">
+                <button>
+                    <img id="ballStatic" class="ball-static" src="images/magic8ball-static.png" alt="Magic 8 ball">
+
+                </button>
+            </div> <!--ball-->
+
+            <div class="ball-output">
+                Answer
+            </div> <!--ball-output-->
+        </div> <!--hero container -->
+    </section> <!--hero-->
+
+</body>
+</html>
