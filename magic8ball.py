@@ -1,37 +1,26 @@
 #Magic 8 Ball
-
 import json
 import random
 import time
+
+import speech_recognition as sr
+
+r = sr.Recognizer()
+
+import pyaudio
+import wave
+
+
+# pip3 install playsound pyaudio pydub ffmpeg-python
+# pip3 install SpeechRecognition pydub
+
+# Need to add component that asks user to indicate when
+# ready to ask quesiton.
 
 # For text-to-speech API
 import gtts
 import os
 from playsound import playsound
-
-
-import multiprocessing
-
-
-
-
-# Not working
-# For music API
-#need to do "pip install ytmusicapi" to get ytmusicapi working
-from ytmusicapi import YTMusic
-
-#YTMusic.setup(filepath="headers_auth.json")
-
-# yt = YTMusic(filepath = "headers_auth.json", headers_raw = "")
-
-# playlistId = yt.create_playlist('test', 'test description'
-
-#generic search for youtube (not specific video)
-# search_results = yt.search('lofi hip hop radio - beats to relax/study to')
-# yt.add_playlist_items(playlistId, [search_results[0]['videoId']])
-
-
-
 
 # pip3 install gTTS pyttsx3 playsound
 # pip uninstall playsound
@@ -78,15 +67,67 @@ def getResponse():
 # Wait before providing a response
 # Repeat steps indefinitely
 def magic8ball():
-    
     while True:
-        elevator_music = multiprocessing.Process(target=playsound, args=('/Users/user/Desktop/Clemson Classes/Fall2022/cpsc3720/Take-me-out-to-the-8-ball-game/elevator_music.mp3',))
-        elevator_music.start()
         print("Please ask a question.")
-        question = input()
+
+
+        # the file name output you want to record into
+        filename = "recorded.wav"
+        # set the chunk size of 1024 samples
+        chunk = 1024
+        # sample format
+        FORMAT = pyaudio.paInt16
+        # mono, change to 2 if you want stereo
+        channels = 1
+        # 44100 samples per second
+        sample_rate = 44100
+        record_seconds = 5
+        # initialize PyAudio object
+        p = pyaudio.PyAudio()
+        # open stream object as input & output
+        stream = p.open(format=FORMAT,
+                channels=channels,
+                rate=sample_rate,
+                input=True,
+                output=True,
+                frames_per_buffer=chunk)
+        frames = []
+        print("Listening...")
+        for i in range(int(sample_rate / chunk * record_seconds)):
+            data = stream.read(chunk)
+            # if you want to hear your voice while recording
+            # stream.write(data)
+            frames.append(data)
+        print("Finished listening.")
+        # stop and close stream
+        stream.stop_stream()
+        stream.close()
+        # terminate pyaudio object
+        p.terminate()
+        # save audio file
+        # open the file in 'write bytes' mode
+        wf = wave.open(filename, "wb")
+        # set the channels
+        wf.setnchannels(channels)
+        # set the sample format
+        wf.setsampwidth(p.get_sample_size(FORMAT))
+        # set the sample rate
+        wf.setframerate(sample_rate)
+        # write the frames as bytes
+        wf.writeframes(b"".join(frames))
+        # close the file
+        wf.close()
+
+        filename = "recorded.wav"
+        with sr.AudioFile(filename) as source:
+            # listen for the data (load audio to memory)
+            audio_data = r.record(source)
+            # recognize (convert from speech to text)
+            question = r.recognize_google(audio_data)
+        print(question + "?")
+        # question = input()
         print("Thinking...")
         time.sleep(10.5)   #random.randrange(3, 5)     <--- alternative code to have randomized time
-        elevator_music.terminate()
         getResponse()
         time.sleep(3)
 
