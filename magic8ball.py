@@ -10,6 +10,9 @@ import os
 from playsound import playsound
 
 
+import multiprocessing
+
+
 
 
 # Not working
@@ -19,13 +22,13 @@ from ytmusicapi import YTMusic
 
 #YTMusic.setup(filepath="headers_auth.json")
 
-yt = YTMusic(filepath = "headers_auth.json", headers_raw = "")
+# yt = YTMusic(filepath = "headers_auth.json", headers_raw = "")
 
-playlistId = yt.create_playlist('test', 'test description')
+# playlistId = yt.create_playlist('test', 'test description'
 
 #generic search for youtube (not specific video)
-search_results = yt.search('lofi hip hop radio - beats to relax/study to')
-yt.add_playlist_items(playlistId, [search_results[0]['videoId']])
+# search_results = yt.search('lofi hip hop radio - beats to relax/study to')
+# yt.add_playlist_items(playlistId, [search_results[0]['videoId']])
 
 
 
@@ -75,11 +78,15 @@ def getResponse():
 # Wait before providing a response
 # Repeat steps indefinitely
 def magic8ball():
+    
     while True:
+        elevator_music = multiprocessing.Process(target=playsound, args=('/Users/user/Desktop/Clemson Classes/Fall2022/cpsc3720/Take-me-out-to-the-8-ball-game/elevator_music.mp3',))
+        elevator_music.start()
         print("Please ask a question.")
         question = input()
         print("Thinking...")
         time.sleep(10.5)   #random.randrange(3, 5)     <--- alternative code to have randomized time
+        elevator_music.terminate()
         getResponse()
         time.sleep(3)
 

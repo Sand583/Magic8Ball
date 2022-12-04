@@ -11,6 +11,7 @@ import time
 import gtts
 import os
 from playsound import playsound
+import multiprocessing
 
 def index(request):
   template = loader.get_template('myfirst.html')
@@ -54,7 +55,15 @@ def response (request):
   tts.save("response.mp3")
   playsound("response.mp3")
   os.remove("response.mp3")
-  return HttpResponse(output)
+
+  template = loader.get_template('myfirst.html')
+  context = {
+    'answer': output,
+  }
+  #return HttpResponse(template.render(context, request))
+  return HttpResponse ("""<html><script>window.location.replace('/');</script></html>""")
+  
+  # return HttpResponse(output)
   # """<html><p>output</p></html>"""
 
 # Prints a random value from the 'reponses' dictionary
@@ -72,10 +81,13 @@ def getResponse():
 # Repeat steps indefinitely
 def magic8ball():
     while True:
+        elevator_music = multiprocessing.Process(target=playsound, args=('/Users/user/Desktop/Clemson Classes/Fall2022/cpsc3720/Take-me-out-to-the-8-ball-game/elevator_music.mp3',))
+        elevator_music.start()
         print("Please ask a question.")
         question = input()
         print("Thinking...")
         time.sleep(10.5)   #random.randrange(3, 5)     <--- alternative code to have randomized time
+        elevator_music.terminate()
         getResponse()
         time.sleep(4)
 

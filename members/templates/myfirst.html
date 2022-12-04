@@ -7,30 +7,18 @@
         background: linear-gradient(#c313d3, #410da7);
         min-height: 100vh;
         margin: 0;
+        font-size: 1.2em; 
+        font-family: Helvetica Neue, Arial, sans-serif;
+        text-transform: uppercase;
     }
     
     /*Menu*/
-    /*.menu {
-        text-align: right;
-        padding: 0.5em;
-    }
-    .menu .container {
-        display: grid;
-        grid-template-columns: 180px auto;
-        justify-content: unset;
-    }
-    .menu nav { 
-        display: none;
-    }*/
     .menu {
         padding: 1em; 
         text-align: right;
     }
-    .menu .menu-cta {
-        cursor: pointer; 
-    }
     .menu nav {
-        display: none; 
+        display: none;
     }
     nav.menu-btn {
         display: block; 
@@ -40,13 +28,29 @@
         z-index: 999;
         right: 0;
         top: 0; 
-        width: 33%; 
+        width: 15em; 
         height: 100vh; 
-        background: grey; 
+        background: linear-gradient(#ffcb22, #ff7a0d);
         padding: 1em; 
     }
-    nav .menu-primary {
-        margin-top: 5em;
+    .menu .menu-primary .container {
+        text-align: center;
+    }
+    .menu .menu-primary {
+        text-align: left;
+    }
+    .menu .menu-secondary {
+        text-align: left; 
+    }
+    .menu li a {
+        text-decoration: none; /*Remove underline*/
+        color: black; /*Make text white*/
+    }
+    a:hover {
+        font-weight: bold;
+    }
+    ul {
+        list-style: none; /*Remove bullet points from list*/
     }
     
     
@@ -60,7 +64,7 @@
     .hero .ball {
         background-color: transparent;
     }
-    .hero .ball button {
+    .hero .ball .ball-btn {
         background-color: transparent; 
         border: 0px;
     }
@@ -108,43 +112,41 @@
 
 <body>
     <div class="menu">
-        <div class="container">
-            <img id="menu-cta" class="menu-icon" src="{% static 'menu.svg' %}" alt="Open Menu">
-            
-            <nav>
-                <img id="menu-exit" class="menu-icon-exit" src="{% static 'images/exit.svg' %}" alt="Close Menu">
+        <img id="menu-cta" class="menu-icon" src="{% static 'menu.svg' %}" alt="Open Menu">
+        
+        <nav>
+            <img id="menu-exit" class="menu-icon-exit" src="{% static 'exit.svg' %}" alt="Close Menu">
 
-                <div class="menu-primary">
-                    <div class="sound">
-                        <div class="volume">
-                            volume
-                            <input type="range" min="0" max="100" class="slider" id="range">
-                        </div>
-                        <div class="volume">
-                            music
-                            <input type="range" min="0" max="100" class="slider" id="range">
-                        </div>
-                        <div class="volume">
-                            text
-                            <input type="range" min="0" max="100" class="slider" id="range">
-                        </div>
-                    </div> <!--sound-->
+            <div class="menu-primary">
+                <div class="sound">
+                    <div class="volume">
+                        volume
+                        <input type="range" min="0" max="100" class="slider" id="range">
+                    </div>
+                    <div class="volume">
+                        music
+                        <input type="range" min="0" max="100" class="slider" id="range">
+                    </div>
+                    <div class="volume">
+                        text
+                        <input type="range" min="0" max="100" class="slider" id="range">
+                    </div>
+                </div> <!--sound-->
 
-                    <ul>
-                        <li>
-                            <a href="#">Customize Answers</a>
-                        </li> 
-                    </ul> 
-                    
-                </div> <!--menu-primary-->
-
-                <ul class="menu-secondary">
+                <ul>
                     <li>
-                        <a href="https://github.com/Sand583/Magic8Ball">gitHub</a>
-                    </li>
-                </ul>
-            </nav> 
-        </div><!--menu container-->
+                        <a href="#">Customize Answers</a>
+                    </li> 
+                </ul> 
+                
+            </div> <!--menu-primary-->
+
+            <ul class="menu-secondary">
+                <li>
+                    <a href="https://github.com/Sand583/Magic8Ball">gitHub</a>
+                </li>
+            </ul>
+        </nav> 
     </div> <!--menu-->
 
     <section class="hero">
@@ -162,13 +164,15 @@
                     <img id="myStar3" src="{% static 'star1.png' %}">
                     <img id="myStar4" src="{% static 'star1.png' %}">
                 </div> <!--star-->
-                <button>
-                    <img id="ballStatic" class="ball-static" src="{% static 'magic8ball-static.png' %}" alt="Magic 8 ball">
-                </button>
+                <form action="/response">
+                    <button class="ball-btn">
+                        <img id="ballStatic" class="ball-static" src="{% static 'magic8ball-static.png' %}" alt="Magic 8 ball">
+                    </button>
+                </form>
             </div> <!--ball-->
 
             <div class="ball-output">
-                Answer
+                {{ answer }}
             </div> <!--ball-output-->
 
         
