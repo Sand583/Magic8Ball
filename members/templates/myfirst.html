@@ -1,7 +1,6 @@
 {% load static %}
 <!--run code with py manage.py runserver          
     to view site: 127.0.0.1:8000/members/  -->
-
 <style>
     /* General */
     body {
@@ -53,9 +52,10 @@
     
     /*Question, 8Ball, and Answer*/
     .hero {
+        /*position: relative;*/
         text-align: center;
-        position: relative;
         color: white;
+        
     }
     .hero .ball {
         background-color: transparent;
@@ -65,6 +65,7 @@
         border: 0px;
     }
     .hero .ball img {
+       
         background-color: transparent;
         border: 0px;
         width: 30em;
@@ -74,28 +75,24 @@
 
     /*Stars*/
     
-    .hero .ball .star img {
+    .hero .star img {
         background-color: transparent; 
         border: 0px;
-        position: absolute;
         height: 100;
         width: 100; 
     }
-    .hero .ball .star #mystar1 {
-        left: 20vw;
-        top: 15vh;
+   .star #mystar1 {
+    padding: .2in;
     }
     .star #mystar2 {
-        left: 30%;
-        top: 5%
+       padding: 1in;
     }
     .star #mystar3 {
-        left: 65%;
-        top: 5%;
+        padding: 1in;
     }
     .star #mystar4 {
-        left: 75%;
-        top: 20%;
+        left: 45;
+        top: 0;
     }
 
 </style>
@@ -157,7 +154,14 @@
             </div> <!--user-input-->
 
             <div class="ball"
+                
                 onclick="before(); star1(); star2(); star3(); star4();">
+                <div class = "star">
+                    <img id="myStar1" src="{% static 'star1.png' %}">
+                    <img id="myStar2" src="{% static 'star1.png' %}">
+                    <img id="myStar3" src="{% static 'star1.png' %}">
+                    <img id="myStar4" src="{% static 'star1.png' %}">
+                </div> <!--star-->
                 <button>
                     <img id="ballStatic" class="ball-static" src="{% static 'magic8ball-static.png' %}" alt="Magic 8 ball">
                 </button>
@@ -167,12 +171,7 @@
                 Answer
             </div> <!--ball-output-->
 
-            <div class = "star">
-                <img id="myStar1" src="{% static 'star1.png' %}">
-                <img id="myStar2" src="{% static 'star1.png' %}">
-                <img id="myStar3" src="{% static 'star1.png' %}">
-                <img id="myStar4" src="{% static 'star1.png' %}">
-            </div> <!--star-->
+        
         </div> <!--hero container -->
     </section> <!--hero-->
     
