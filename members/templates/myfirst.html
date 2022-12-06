@@ -157,18 +157,18 @@
 
             <div class="ball"
                 
-                onclick="before(); star1(); star2(); star3(); star4();">
+                onclick="before(); show(); star1(); star2(); star3(); star4();">
                 <div class = "star">
-                    <img id="myStar1" src="{% static 'star1.png' %}">
-                    <img id="myStar2" src="{% static 'star1.png' %}">
-                    <img id="myStar3" src="{% static 'star1.png' %}">
-                    <img id="myStar4" src="{% static 'star1.png' %}">
+                    <img id="myStar1" src="{% static 'star1.png' %}" style = "display:none">
+                    <img id="myStar2" src="{% static 'star1.png' %}" style = "display:none">
+                    <img id="myStar3" src="{% static 'star1.png' %}" style = "display:none">
+                    <img id="myStar4" src="{% static 'star1.png' %}" style = "display:none">
                 </div> <!--star-->
-                <form action="/response">
+               <!--<form action="/response"> --> 
                     <button class="ball-btn">
                         <img id="ballStatic" class="ball-static" src="{% static 'magic8ball-static.png' %}" alt="Magic 8 ball">
                     </button>
-                </form>
+               <!-- </form> --> 
             </div> <!--ball-->
 
             <div class="ball-output">
@@ -217,6 +217,22 @@
             duration: 2700,
             iterations: 4
         }
+        function show()
+        {
+            document.getElementById('myStar1').style.display='initial';
+            window.setTimeout("document.getElementById('myStar1').style.display='none';", 10500);
+            
+            document.getElementById('myStar2').style.display='initial';
+            window.setTimeout("document.getElementById('myStar2').style.display='none';", 10500);
+            
+            document.getElementById('myStar3').style.display='initial';
+            window.setTimeout("document.getElementById('myStar3').style.display='none';", 10500);
+            
+            document.getElementById('myStar4').style.display='initial';
+            window.setTimeout("document.getElementById('myStar4').style.display='none';", 10500);
+            
+        }
+
         function star1(){ document.getElementById("myStar1").animate
             (  
                 spin,
