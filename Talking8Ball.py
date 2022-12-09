@@ -1,5 +1,4 @@
 #Magic 8 Ball
-import json
 import random
 import time
 import sys
