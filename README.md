@@ -2,6 +2,16 @@
 
 Team Members: Emily Sandstrom, Liam Leahy, Kristina Zuniga, Harrison Tun, Stephen Sams
 
+***IMPORTANT***
+You will need to do the following installs in order to get the program to run correctly (may need to adjust to pip3 or pip depending on your version of python):
+1. pip3 install playsound pyaudio pydub ffmpeg-python (maybe just pysound in general : pip install playsound)
+2. pip3 install SpeechRecognition pydub
+3. pip3 install pytube
+4. pip install PySide6
+5. pip install gTTS
+6. pip install pyglet
+7. (might need this one): pip install Wave
+
 Magic 8 ball team project for 3720 
 Meeting Notes: https://docs.google.com/document/d/1gcicHMWvXZIwKz-5-sFnKCrD5gy73rB16Ij3maD42tw/edit?usp=sharing 
 
