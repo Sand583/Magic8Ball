@@ -1,0 +1,11 @@
+User stories 
+1. As a user I can click the ball to get a response so that I can make a decision. 
+2. As a user I can ask a question out loud and see the text of my question so that I can be amused. 
+3. As a user I can close the magic 8 ball application 
+
+Non-functional requirements 
+1. Music plays when the magic 8 ball is not being used. 
+2. Magic 8 ball repeats the user’s question back to them. 
+3. The magic 8 ball says its answer out loud. 
+4. Magic 8 ball thinks for a minimum of 5 seconds, up to 10 seconds 
+5. The magic 8 ball shakes around while it's not being used. 
