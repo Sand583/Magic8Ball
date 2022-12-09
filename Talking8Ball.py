@@ -71,7 +71,6 @@ class MainWindow(QMainWindow):
         self.player = pyglet.media.Player()
         # Load the audio file using pyglet
         self.filePath = r"Best of lofi hip hop 2021 ✨ - beats to relaxstudy to.mp4"
-        # https://www.youtube.com/watch?v=26nsBfLXwSQ
         self.music = pyglet.media.load(self.filePath)
         self.player.queue(self.music)
         # Play the audio file
