@@ -8,7 +8,6 @@ import pyglet
 import speech_recognition as sr
 import gtts
 import os
-#from PySide6.QtWidgets import QApplication, QWidget, QPushButton, Qlabel, QMainWindow, QVBoxLayout
 
 from PySide6.QtWidgets import (
     QMainWindow, QApplication,
