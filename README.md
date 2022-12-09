@@ -4,11 +4,11 @@ Team Members: Emily Sandstrom, Liam Leahy, Kristina Zuniga, Harrison Tun, Stephe
 
 ***IMPORTANT***
 You will need to do the following installs in order to get the program to run correctly (may need to adjust to pip3 or pip depending on your version of python):
-1. pip3 install playsound pyaudio pydub ffmpeg-python (maybe just pysound in general : pip install playsound)
+1. pip3 install playsound pyaudio pydub ffmpeg-python (maybe just pysound in general : pip install playsound==1.2.2)
 2. pip3 install SpeechRecognition pydub
 3. pip3 install pytube
 4. pip install PySide6
-5. pip install gTTS
+5. pip3 install gTTS pyttsx3 playsound
 6. pip install pyglet
 7. (might need this one): pip install Wave
 
