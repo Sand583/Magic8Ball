@@ -27,6 +27,8 @@ from pytube import YouTube
 from playsound import playsound
 r = sr.Recognizer()
 
+from pathlib import Path
+
 # Dictionary to store all magic 8 ball responses
 responses = {
     # Positive Respones
@@ -65,13 +67,12 @@ class MainWindow(QMainWindow):
         # Get the audio stream from the YouTube video
         audio_stream = yt.streams.filter(only_audio=True).first()
         # Download the audio file
-        audio_stream.download("music.mp3")
+        audio_stream.download()
         self.player = pyglet.media.Player()
         # Load the audio file using pyglet
-        # self.filePath = r"C:\Users\liamr\OneDrive\Desktop\python\cpsc3720\music.mp3\Best of lofi hip hop 2021 ✨ - beats to relaxstudy to.mp4"
-        self.filePath = r"music.mp3\Best of lofi hip hop 2021 ✨ - beats to relaxstudy to.mp4"
+        self.filePath = r"Best of lofi hip hop 2021 ✨ - beats to relaxstudy to.mp4"
         # https://www.youtube.com/watch?v=26nsBfLXwSQ
-        self. music = pyglet.media.load(self.filePath)
+        self.music = pyglet.media.load(self.filePath)
         self.player.queue(self.music)
         # Play the audio file
         self.player.play()
