@@ -75,8 +75,6 @@ class MainWindow(QMainWindow):
         # Play the audio file
         self.player.play()
 
-        # Create a QApplication instance
-        #self.app = QApplication([])
         # Create a QWidget instance
         self.widget = QWidget()
         self.widget.setStyleSheet("* {color: qlineargradient(spread:pad, x1:0 y1:0, x2:0 y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));""background: qlineargradient( x1:0 y1:0, x2:0 y2:1, stop:0 cyan, stop:1 purple);}")
