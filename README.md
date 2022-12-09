@@ -9,6 +9,9 @@ Idea:
     When you think of a magic 8 ball you think of a ball that you ask a question, then shake and 
     wait for an answer to appear in the ball. For our project we took that idea and enhanced it.
 
+How to use:
+    First, make sure to have python downloaded (https://www.python.org/downloads/), pyside6 downloaded (https://pypi.org/project/PySide6/), and any promted pySide6 imports. To run, in the terminal type: "python3 magic8ball.py" 
+
 API's Used:
     Our Project integrates three API's: Speech to text API, a Youtube music API, and a text to 
     speech API. 
