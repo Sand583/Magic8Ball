@@ -59,7 +59,8 @@ How The magic 8 ball gif and GUI pop up function:
 
 ScreenShots:
 
-
+1. <img width="595" alt="Picture1" src="https://user-images.githubusercontent.com/112186297/206731502-b4327a11-6abd-44f6-8faf-1f06babc1c52.png">
+2. <img width="609" alt="Picture2" src="https://user-images.githubusercontent.com/112186297/206731505-8a565375-4476-4821-a8f6-ff36299aa4eb.png">
 
 Video:
 
